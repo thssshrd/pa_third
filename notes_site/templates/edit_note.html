@@ -1,0 +1,12 @@
+<!-- templates/edit_note.html -->
+{% extends 'base.html' %}
+{% block content %}
+<h2>Edit Note</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <p><strong>Date Created:</strong> {{ note.date_created|date:"m/d/Y" }}</p>
+    <button type="submit">Save Changes</button>
+</form>
+<a href="{% url 'note_list' %}">Back to Notes</a>
+{% endblock %}

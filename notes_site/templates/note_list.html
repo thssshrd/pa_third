@@ -1,0 +1,32 @@
+{% extends 'base.html' %} {% block content %} {% load static %}
+<header class="top-nav">
+	<div class='left-container'>
+		<img src='{% static "view-picker.svg" %}' height='26px' width='68px'/>
+	</div>
+	<span class='logotype'>UNTASK</span>
+	<div class='right-container'>
+		<img src='{% static "new-task-button.svg" %}' height='26px' width='46px'/>
+		<img src='{% static "archive-button.svg"%}' height='26px' width='36px'/>
+	</div>
+</header>
+<main role="main" class="note-list">
+  <div class="note-wrapper">
+    <div class="note-container">
+      {% for note in notes %}
+      <div class="note">
+		<div class='note-content'>
+			<div class="card-block title">{{ note.title|default:"(No Title)" }}</div>
+			<div class="card-block text">{{ note.text }}</div>
+			<div class="card-block meta">
+				<div class='priority'>{{ note.get_priority_display }}</div>
+				<div class="due-date">{{ note.due_date|date:"d/m/Y" }}</div>
+			</div>
+		</div>
+      </div>
+      {% empty %}
+      <li>Пока что нет заметок!</li>
+      {% endfor %}
+    </div>
+  </div>
+</main>
+{% endblock %}
