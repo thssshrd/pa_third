@@ -1,6 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Display:ital,wght@0,100..900;1,100..900&display=swap');
 @font-face {
     font-family: "Rounds Black";
-    src: url({% static "rounds-black.regular.otf" %});
+    src: url("rounds-black.regular.otf");
 }
 
 :root {
@@ -9,7 +10,9 @@
     --text-16-regular: 16px "Noto Sans Display", sans-serif;
     --text-big-logo: 54px "Rounds Black", sans-serif;
     --text-small-logo: 22px "Rounds Black", sans-serif;
-    --text-card-header: 12px "Noto Sans Display", sans-serif;
+    --text-card-header: 500 12px "Noto Sans Display";
+    --text-card-content: 400 14px "Noto Sans Display";
+    --text-card-meta: 500 12px "Noto Sans Display";
     --gray-0: #000000;
     --gray-5: #0F1112;
     --gray-10: #1A1C1C;
@@ -38,6 +41,7 @@
     --orange-700: #F57C00;
     --orange-800: #EF6C00;
     & body {
+        font-synthesis: none;
         font: var(--text-16-regular) !important;
         margin: 0;
         height: 100vh;
@@ -204,7 +208,6 @@ header.top-nav {
     }
 }
 main.note-list {
-    font: var(--text-14-regular) !important;
     height: 100%;
     width: 100%;
     padding-top: 12px;
@@ -239,14 +242,20 @@ main.note-list {
                     & .card-block {
                         &.title {
                             font: var(--text-card-header);
-                            font-weight: 600;
                             padding-bottom: 8px;
+                            & a {
+                                text-decoration: none;
+                                color:inherit;
+                            }
                         }
                         &.text {
-                            font: var(--text-14-regular);
+                            font: var(--text-card-content);
                         }
                         &.meta {
-                            font: var(--text-12-regular);
+                            display: flex;
+                            flex-direction: row;
+                            gap: 10px;
+                            font: var(--text-card-meta);
                             color: var(--gray-40);
                             padding-top: 10px;
                             & .priority {
