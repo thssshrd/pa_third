@@ -40,18 +40,20 @@
     --orange-600: #FB8C00;
     --orange-700: #F57C00;
     --orange-800: #EF6C00;
-    & body {
-        font-synthesis: none;
-        font: var(--text-16-regular) !important;
-        margin: 0;
-        height: 100vh;
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-    }
-    & button {
-        cursor: pointer;
-    }
+}
+
+body {
+    font-synthesis: none;
+    font: var(--text-16-regular) !important;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+button {
+    cursor: pointer;
 }
 
 main.login {
@@ -63,123 +65,136 @@ main.login {
     justify-content: center;
     align-items: center;
     gap: 48px;
-    & #form-container {
-        box-sizing: border-box;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding: 4px;
-        width: 390px;
-        height: fit-content;
-        background: var(--gray-99);
-        border: 1px solid var(--gray-90);
-        border-radius: 16px;
-        flex: none;
-        order: 0;
-        flex-grow: 0;
-        & #auth-form {
-            box-sizing: inherit;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 32px 28px 12px;
-            gap: 12px;
-            background: var(--gray-100);
-            border: 1px solid var(--gray-95);
-            border-radius: 12px;
-            flex: none;
-            align-self: stretch;
-            flex-grow: 0;
-            & input {
-                font: inherit;
-                box-sizing: inherit;
-                width: 100%;
-                border: none;
-                outline: none;
-                color: var(--gray-50);
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: flex-start;
-                padding: 10px 16px;
-                gap: 10px;
-                min-height: 52px;
-                background-color: var(--gray-95);
-                border-radius: 10px;
-                flex: none;
-                order: 0;
-                align-self: stretch;
-                flex-grow: 0;
-                &::placeholder {
-                    color: var(--gray-60);
-                }
-                &:focus {
-                    background-color: var(--gray-100);
-                    border: 1px solid var(--gray-60);
-                    color: var(--gray-0);
-                }
-            }
-            & button[type='submit'] {
-                font: var(--text-16-regular);
-                font-style: normal;
-                font-weight: 500;
-                letter-spacing: 0.5px;
-                /* line-height: 22px; */
-                border: none;
-                display: flex;
-                flex-direction: row;
-                justify-content: center;
-                align-items: center;
-                padding: 0 24px;
-                width: 100%;
-                min-height: 42px;
-                background-color: var(--orange-500);
-                color: var(--orange-50);
-                border-radius: 10px;
-                flex: none;
-                order: 1;
-                flex-grow: 0;
-            }
-            & .register-container {
-                display: flex;
-                flex-direction: row;
-                justify-content: center;
-                align-items: center;
-                order: 1;
-                gap: 0px;
-                & * {
-                    display: flex;
-                    align-items: center;
-                    color: var(--gray-0);
-                    text-decoration: none;
-                    padding: 0 12px;
-                    width: fit-content;
-                    min-height: 42px;
-                    border: none;
-                    background: var(--gray-100);
-                    &:nth-child(2){
-                        padding: 0 4px;
-                    }
-                    &#register:hover {
-                            background: var(--gray-98);
-                            border-radius: 10px;
-                            transition: background-color ease-in-out 90ms;
-                        }
-                    &#register:active {
-                        background-color: var(--gray-95);
-                    }
-                }
-            }
-        }
-    }
-    & #logo-container {
-        color: var(--gray-30);
-        display: flex;
-        align-items: center;
-        font: var(--text-big-logo);
-    }
 }
+
+main.login #form-container {
+    /* Styles for #form-container inside main.login */
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 4px;
+    width: 390px;
+    height: fit-content;
+    background: var(--gray-99);
+    border: 1px solid var(--gray-90);
+    border-radius: 16px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+main.login #form-container #auth-form {
+    /* Styles for #auth-form inside #form-container */
+    box-sizing: inherit;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 32px 28px 12px;
+    gap: 12px;
+    background: var(--gray-100);
+    border: 1px solid var(--gray-95);
+    border-radius: 12px;
+    flex: none;
+    align-self: stretch;
+    flex-grow: 0;
+}
+
+main.login #form-container #auth-form input {
+    /* Styles for inputs inside #auth-form */
+    font: inherit;
+    box-sizing: inherit;
+    width: 100%;
+    border: none;
+    outline: none;
+    color: var(--gray-50);
+    padding: 10px 16px;
+    min-height: 52px;
+    background-color: var(--gray-95);
+    border-radius: 10px;
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 0;
+}
+
+main.login #form-container #auth-form input::placeholder {
+    color: var(--gray-60);
+}
+
+main.login #form-container #auth-form input:focus {
+    background-color: var(--gray-100);
+    border: 1px solid var(--gray-60);
+    color: var(--gray-0);
+}
+
+main.login #form-container #auth-form button[type='submit'] {
+    /* Styles for submit button inside #auth-form */
+    font: var(--text-16-regular);
+    font-style: normal;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 24px;
+    width: 100%;
+    min-height: 42px;
+    background-color: var(--orange-500);
+    color: var(--orange-50);
+    border-radius: 10px;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+main.login #form-container #auth-form .register-container {
+    /* Styles for .register-container inside #auth-form */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    order: 1;
+    gap: 0px;
+}
+
+main.login #form-container #auth-form .register-container * {
+    /* Styles for all children inside .register-container */
+    display: flex;
+    align-items: center;
+    color: var(--gray-0);
+    text-decoration: none;
+    padding: 0 12px;
+    width: fit-content;
+    min-height: 42px;
+    border: none;
+    background: var(--gray-100);
+}
+
+main.login #form-container #auth-form .register-container *:nth-child(2) {
+    padding: 0 4px;
+}
+
+main.login #form-container #auth-form .register-container #register:hover {
+    background: var(--gray-98);
+    border-radius: 10px;
+    transition: background-color ease-in-out 90ms;
+}
+
+main.login #form-container #auth-form .register-container #register:active {
+    background-color: var(--gray-95);
+}
+
+main.login #form-container #logo-container {
+    /* Styles for #logo-container inside #form-container */
+    color: var(--gray-30);
+    display: flex;
+    align-items: center;
+    font: var(--text-big-logo);
+}
+
 header.top-nav {
     display: flex;
     flex-direction: row;
@@ -190,23 +205,27 @@ header.top-nav {
     position: relative;
     padding-top: 12px;
     padding-bottom: 8px;
-    & .logotype {
-        font: var(--text-small-logo);
-        color: var(--gray-30);
-    }
-    & .left-container {
-        display: inherit;
-        width: 273px;
-        align-items: center;
-    }
-    & .right-container {
-        display: flex;
-        flex-direction: row-reverse;
-        gap: 6px;
-        width: 273px;
-        align-items: center;
-    }
 }
+
+header.top-nav .logotype {
+    font: var(--text-small-logo);
+    color: var(--gray-30);
+}
+
+header.top-nav .left-container {
+    display: inherit;
+    width: 273px;
+    align-items: center;
+}
+
+header.top-nav .right-container {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 6px;
+    width: 273px;
+    align-items: center;
+}
+
 main.note-list {
     height: 100%;
     width: 100%;
@@ -216,55 +235,62 @@ main.note-list {
     justify-content: flex-start;
     align-items: center;
     gap: 48px;
-    & div.note-wrapper {
-        display: inherit;
-        justify-content: center;
-        max-width: 766px;
-        min-width: 766px;
-        width: 100%;
-        & div.note-container {
-            width: 646px;
-            display: inherit;
-            flex-direction: column;
-            gap: 16px;
-            & .note {
-                background-color: var(--gray-99);
-                padding: 4px;
-                border: 1px solid var(--gray-90);
-                border-radius: 8px;
-                & .note-content {
-                    display: flex;
-                    flex-direction: column;
-                    padding: 8px 12px;
-                    background-color: var(--gray-100);
-                    border: 1px solid var(--gray-95);
-                    border-radius: 6px;
-                    & .card-block {
-                        &.title {
-                            font: var(--text-card-header);
-                            padding-bottom: 8px;
-                            & a {
-                                text-decoration: none;
-                                color:inherit;
-                            }
-                        }
-                        &.text {
-                            font: var(--text-card-content);
-                        }
-                        &.meta {
-                            display: flex;
-                            flex-direction: row;
-                            gap: 10px;
-                            font: var(--text-card-meta);
-                            color: var(--gray-40);
-                            padding-top: 10px;
-                            & .priority {
-                                text-decoration: underline;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
+}
+
+main.note-list .note-wrapper {
+    display: inherit;
+    justify-content: center;
+    max-width: 766px;
+    min-width: 766px;
+    width: 100%;
+}
+
+main.note-list .note-wrapper .note-container {
+    display: flex;
+    width: 646px;
+    flex-direction: column;
+    gap: 16px;
+}
+
+main.note-list .note-wrapper .note-container .note {
+    background-color: var(--gray-99);
+    padding: 4px;
+    border: 1px solid var(--gray-90);
+    border-radius: 8px;
+}
+
+main.note-list .note-wrapper .note-container .note .note-content {
+    display: flex;
+    flex-direction: column;
+    padding: 8px 12px;
+    background-color: var(--gray-100);
+    border: 1px solid var(--gray-95);
+    border-radius: 6px;
+}
+
+main.note-list .note-wrapper .note-container .note .note-content .card-block.title {
+    font: var(--text-card-header);
+    padding-bottom: 8px;
+}
+
+main.note-list .note-wrapper .note-container .note .note-content .card-block.title a {
+    text-decoration: none;
+    color: inherit;
+}
+
+main.note-list .note-wrapper .note-container .note .note-content .card-block.text {
+    font: var(--text-card-content);
+}
+
+main.note-list .note-wrapper .note-container .note .note-content .card-block.meta {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    font: var(--text-card-meta);
+    color: var(--gray-40);
+    padding-top: 10px;
+}
+
+main.note-list .note-wrapper .note-container .note .note-content .card-block.meta .priority {
+    text-decoration: underline;
 }
