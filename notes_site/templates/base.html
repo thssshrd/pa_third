@@ -3,9 +3,10 @@
   <head>
     {% load static %}
     <meta charset="UTF-8" />
-    <meta name="viewport" {% load static %} content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="{% static 'styles.css' %}">
-    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href='{% static "css/base.css" %}'/>
+    <link rel='icon' type='image/x-icon' href='{% static 'img/favicon.svg' %}'/>
+    <title>Untask</title>
   </head>
   <body>
     {% block content %}{% endblock %}

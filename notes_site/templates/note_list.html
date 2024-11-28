@@ -1,12 +1,15 @@
 {% extends 'base.html' %} {% block content %} {% load static %}
+<link rel='stylesheet' href='{% static "css/note_list.css" %}'/>
 <header class="top-nav">
-	<div class='left-container'>
-		<img src='{% static "view-picker.svg" %}' height='26px' width='68px'/>
-	</div>
-	<span class='logotype'>UNTASK</span>
-	<div class='right-container'>
-		<a style='line-height:0'href='{% url 'add_note' %}'><img src='{% static "new-task-button.svg" %}' height='26px' width='46px'/></a>
-		<img src='{% static "archive-button.svg"%}' height='26px' width='36px'/>
+	<div class='wrapper'>
+		<div class='left-container'>
+			<img src='{% static "img/view-picker.svg" %}' height='26px' width='68px'/>
+		</div>
+		<span class='logotype'>UNTASK</span>
+		<div class='right-container'>
+			<a style='line-height:0'href='{% url 'add_note' %}'><img src='{% static "img/new-task-button.svg" %}' height='26px' width='36px'/></a>
+			<img src='{% static "img/archive-button.svg"%}' height='26px' width='36px'/>
+		</div>
 	</div>
 </header>
 <main role="main" class="note-list">

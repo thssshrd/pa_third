@@ -1,9 +1,10 @@
 {% extends 'base.html' %}
-{% block content %}
 {% load static %}
+{% block content %}
+<link rel='stylesheet' href='{% static "css/login.css" %}'/>
 <main role="main" class='login'>
     <div id="logo-container">
-        <img src="{% static 'logo40.svg' %}" alt="" height="50"><span class="logotype">UNTASK</span>
+        <img src="{% static 'img/logo40.svg' %}" alt="" height="50"><span class="logotype">UNTASK</span>
     </div>
     <div id="form-container">
         <form id='auth-form' method="post">

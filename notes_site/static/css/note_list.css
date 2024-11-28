@@ -1,0 +1,127 @@
+@import 'base.css';
+
+
+header.top-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: 30px;
+    padding-top: 12px;
+    padding-bottom: 8px;
+    background-color: var(--header-light-transparent);
+    backdrop-filter: blur(10px);
+}
+
+header.top-nav > .wrapper {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    max-width: 646px;
+}
+
+header.top-nav .logotype {
+    font: var(--text-small-logo);
+    color: var(--gray-30);
+}
+
+header.top-nav .left-container {
+    display: none;
+    width: 273px;
+    align-items: center;
+}
+
+header.top-nav .right-container {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 6px;
+    width: 273px;
+    align-items: center;
+}
+
+main.note-list {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 48px;
+}
+
+main.note-list .note-wrapper {
+    padding: 12px 0;
+    display: inherit;
+    justify-content: center;
+    max-width: 766px;
+    min-width: 766px;
+    width: 100%;
+}
+
+main.note-list .note-wrapper .note-container {
+    display: flex;
+    width: 646px;
+    flex-direction: column;
+    gap: 16px;
+}
+
+main.note-list .note-wrapper .note-container .note {
+    display: flex;
+    background-color: var(--gray-99);
+    padding: 4px;
+    border: 1px solid var(--gray-90);
+    border-radius: 8px;
+}
+
+main.note-list .note-wrapper .note-container .note .note-content {
+    display: flex;
+    flex-direction: column;
+    padding: 8px 12px;
+    background-color: var(--gray-100);
+    border: 1px solid var(--gray-95);
+    border-radius: 6px;
+}
+
+main.note-list .note-wrapper .note-container .note .note-content .card-block.title {
+    font: var(--text-card-header);
+    padding-bottom: 8px;
+}
+
+main.note-list .note-wrapper .note-container .note .note-content .card-block.title a {
+    text-decoration: none;
+    color: inherit;
+}
+
+main.note-list .note-wrapper .note-container .note .note-content .card-block.text {
+    font: var(--text-card-content);
+    max-height: 228px;
+    overflow-y: scroll;
+}
+
+main.note-list .note-wrapper .note-container .note .note-content .card-block.meta {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    font: var(--text-card-meta);
+    color: var(--gray-40);
+    padding-top: 10px;
+}
+
+main.note-list .note-wrapper .note-container .note .note-content .card-block.meta :is(div[class='due-date']):is[div] {
+    display: none;
+}
+
+main.note-list .note-wrapper .note-container .note .note-content .card-block.meta .priority {
+    text-decoration: underline;
+}
+
+main.note-list .note-wrapper .note-container.col2 {
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+main.note-list .note-wrapper .note-container.col2 .note {
+    width: calc(100%/2 - 20px);
+}
