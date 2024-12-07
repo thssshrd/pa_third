@@ -1,28 +1,30 @@
 {% extends 'base.html' %} {% block content %} {% load static %}
 <link rel='stylesheet' href='{% static "css/note_list.css" %}'/>
-<header class="top-nav">
-	<div class='wrapper'>
-		<div class='left-container'>
-			<img src='{% static "img/view-picker.svg" %}' height='26px' width='68px'/>
-		</div>
-		<span class='logotype'>UNTASK</span>
-		<div class='right-container'>
-			<a style='line-height:0'href='{% url 'add_note' %}'><img src='{% static "img/new-task-button.svg" %}' height='26px' width='36px'/></a>
-			<img src='{% static "img/archive-button.svg"%}' height='26px' width='36px'/>
+<div role='banner' class='navbar'>
+	<div class='container'>
+		<div class='wrapper'>
+			<div class='left-container'>
+				<img src='{% static "img/view-picker.svg" %}' height='26px' width='68px'/>
+			</div>
+			<span class='logotype'>UNTASK</span>
+			<div class='right-container'>
+				<a style='line-height:0'href='{% url 'add_note' %}'><img src='{% static "img/new-task-button.svg" %}' height='26px' width='36px'/></a>
+				<img src='{% static "img/archive-button.svg"%}' height='26px' width='36px'/>
+			</div>
 		</div>
 	</div>
-</header>
-<main role="main" class="note-list">
-  <div class="note-wrapper">
-    <div class="note-container">
+</div>
+<div role='main' class='note-list'>
+  <div class='aligner'>
+    <div class='container'>
       {% for note in notes %}
-      <div class="note">
-		<div class='note-content'>
-			<div class="card-block title"><a href='{% url "edit_note" note.id %}'>{{ note.title|default:"(No Title)" }}</a></div>
-			<div class="card-block text">{{ note.text|linebreaksbr }}</div>
-			<div class="card-block meta">
-				<div class="due-date">{{ note.due_date|date:"d/m/Y" }}</div>
-				<div class='priority'>{{ note.get_priority_display }}</div>
+      <div class='note'>
+		<div class='content'>
+			<div class='block title'><a href='{% url "edit_note" note.id %}'>{{ note.title|default:"(No Title)" }}</a></div>
+			<div class='block text'>{{ note.text}}</div>
+			<div class='block meta'>
+				<div class='due-date'>{{ note.due_date|date:'d/m/Y' }}</div>
+				<div class='priority {{ note.get_priority_color }}'>{{ note.get_priority_display }}</div>
 			</div>
 		</div>
       </div>
@@ -31,5 +33,5 @@
       {% endfor %}
     </div>
   </div>
-</main>
+</div>
 {% endblock %}

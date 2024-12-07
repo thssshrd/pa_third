@@ -1,40 +1,53 @@
-@import 'base.css';
+/* Header */
+:root{
+    /* position: relative !important; */
+    scroll-behavior: smooth;
+}
 
+.navbar {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: auto;
+    display: flex;
+}
 
-header.top-nav {
+.navbar .container {
+    /* position: absolute; */
+    /* top: 0; */
+    /* left: 0; */
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    position: sticky;
-    top: 0;
     width: 100%;
-    height: 30px;
-    padding-top: 12px;
-    padding-bottom: 8px;
+    height: auto;
+    box-sizing:border-box;
+    padding: 12px 20px;
     background-color: var(--header-light-transparent);
     backdrop-filter: blur(10px);
 }
 
-header.top-nav > .wrapper {
+.navbar .container > .wrapper {
     display: flex;
     width: 100%;
     justify-content: space-between;
     max-width: 646px;
+    min-width: 256px;
 }
 
-header.top-nav .logotype {
+.navbar .container .logotype {
     font: var(--text-small-logo);
     color: var(--gray-30);
 }
 
-header.top-nav .left-container {
+.navbar .container .left-container {
     display: none;
     width: 273px;
     align-items: center;
 }
 
-header.top-nav .right-container {
+.navbar .container .right-container {
     display: flex;
     flex-direction: row-reverse;
     gap: 6px;
@@ -42,33 +55,35 @@ header.top-nav .right-container {
     align-items: center;
 }
 
-main.note-list {
+/* Main */
+
+.note-list {
     height: 100%;
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    gap: 48px;
+    /* gap: 48px; */
 }
 
-main.note-list .note-wrapper {
-    padding: 12px 0;
+.note-list > .aligner {
     display: inherit;
+    box-sizing: border-box;
+    padding: 12px 20px;
     justify-content: center;
-    max-width: 766px;
-    min-width: 766px;
     width: 100%;
 }
 
-main.note-list .note-wrapper .note-container {
-    display: flex;
-    width: 646px;
+.note-list .aligner .container {
+    display: inherit;
+    max-width: 646px;
+    min-width: 256px;
     flex-direction: column;
     gap: 16px;
 }
 
-main.note-list .note-wrapper .note-container .note {
+.note-list .note {
     display: flex;
     background-color: var(--gray-99);
     padding: 4px;
@@ -76,7 +91,7 @@ main.note-list .note-wrapper .note-container .note {
     border-radius: 8px;
 }
 
-main.note-list .note-wrapper .note-container .note .note-content {
+.note-list .note .content {
     display: flex;
     flex-direction: column;
     padding: 8px 12px;
@@ -85,23 +100,28 @@ main.note-list .note-wrapper .note-container .note .note-content {
     border-radius: 6px;
 }
 
-main.note-list .note-wrapper .note-container .note .note-content .card-block.title {
+.note-list .container .note .content .block.title {
     font: var(--text-card-header);
     padding-bottom: 8px;
 }
 
-main.note-list .note-wrapper .note-container .note .note-content .card-block.title a {
+.note-list .container .note .content .block.title a {
     text-decoration: none;
     color: inherit;
 }
 
-main.note-list .note-wrapper .note-container .note .note-content .card-block.text {
+.note-list .container .note .content .block.text {
+    box-sizing: border-box;
     font: var(--text-card-content);
     max-height: 228px;
-    overflow-y: scroll;
+    white-space: pre-wrap;
+    overflow: hidden;
+    &::slotted {
+        background-color: red;
+    }
 }
 
-main.note-list .note-wrapper .note-container .note .note-content .card-block.meta {
+.note-list .container .note .content .block.meta {
     display: flex;
     flex-direction: row;
     gap: 10px;
@@ -110,18 +130,18 @@ main.note-list .note-wrapper .note-container .note .note-content .card-block.met
     padding-top: 10px;
 }
 
-main.note-list .note-wrapper .note-container .note .note-content .card-block.meta :is(div[class='due-date']):is[div] {
+.note-list .container .note .content .block.meta :is(div[class='due-date']):is[div] {
     display: none;
 }
 
-main.note-list .note-wrapper .note-container .note .note-content .card-block.meta .priority {
+.note-list .container .note .content .block.meta .priority {
     text-decoration: underline;
 }
 
-main.note-list .note-wrapper .note-container.col2 {
+.note-list .container.col2 {
     flex-direction: row;
     flex-wrap: wrap;
 }
-main.note-list .note-wrapper .note-container.col2 .note {
+.note-list .container.col2 .note {
     width: calc(100%/2 - 20px);
 }
