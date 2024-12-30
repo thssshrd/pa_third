@@ -3,16 +3,20 @@
 {% block content %}
 <link rel='stylesheet' href='{% static "css/login.css" %}'/>
 <main role="main" class='login'>
-    <div id="logo-container">
+    <div class="c logo">
         <img src="{% static 'img/logo40.svg' %}" alt="" height="50"><span class="logotype">UNTASK</span>
     </div>
-    <div id="form-container">
-        <form id='auth-form' method="post">
+    <div class="c form">
+        <form method="post">
             {% csrf_token %}
             {{ form.username }}
             {{ form.password }}
             <button type="submit">Вход</button>
-            <div class="register-container"><div class="text">Нет аккаунта?</div><div class="text">·</div><a id="register" href="{% url 'signup' %}">Регистрация</a></div>
+            <div class="c link">
+                <div>Нет аккаунта?</div>
+                <div>•</div>
+                <a id="register" href="{% url 'signup' %}">Регистрация</a>
+            </div>
         </form>
     </div>
 </main>

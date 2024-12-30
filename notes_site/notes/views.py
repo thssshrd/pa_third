@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
-from .forms import NoteForm, SignUpForm, CustomAuthenticationForm
+from .forms import NoteForm, SignUpForm, SigninForm
 from .models import Note
 
 
@@ -22,7 +22,7 @@ def login_view(request):
     if request.user.is_authenticated:
         return redirect('note_list')
     if request.method == 'POST':
-        form = CustomAuthenticationForm(request, data=request.POST)
+        form = SigninForm(request, data=request.POST)
         if form.is_valid():
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password')
@@ -31,7 +31,7 @@ def login_view(request):
                 login(request, user)
                 return redirect('note_list')
     else:
-        form = CustomAuthenticationForm()
+        form = SigninForm()
     return render(request, 'login.html', {'form': form})
 
 def logout_view(request):

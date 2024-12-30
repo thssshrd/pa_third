@@ -7,20 +7,19 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import AuthenticationForm
 
-class CustomAuthenticationForm(AuthenticationForm):
+class SigninForm(AuthenticationForm):
     username = forms.CharField(
         max_length=254,
         widget=forms.TextInput(attrs={
-            'class': 'login-input',
-            'placeholder': 'Почтовый адрес',
-            'autocomplete': "on",
+            'placeholder': 'Введите учётную запись или почтовый адрес',
+            'autocomplete': "off"
         }),
     )
     password = forms.CharField(
         strip=False,
         widget=forms.PasswordInput(attrs={
-            'class': 'password-input',
-            'placeholder': 'Пароль',
+            'placeholder': 'Введите пароль',
+            'autocomplete': "off"
         }),
     )
 

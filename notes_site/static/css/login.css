@@ -2,6 +2,7 @@
 
 main.login {
     font: var(--text-14-regular);
+    box-sizing: border-box;
     height: 100%;
     width: 100%;
     display: flex;
@@ -11,17 +12,18 @@ main.login {
     gap: 48px;
 }
 
-main.login #logo-container {
+.c.logo {
+    box-sizing: inherit;
     display: flex;
     align-items: center;
 }
 
-main.login #logo-container .logotype {
+.c.logo > .logotype {
     font: var(--text-big-logo);
 }
 
-main.login #form-container {
-    box-sizing: border-box;
+.c.form {
+    box-sizing: inherit;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -37,49 +39,58 @@ main.login #form-container {
     flex-grow: 0;
 }
 
-main.login #form-container #auth-form {
+.c.form form {
     box-sizing: inherit;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 32px 28px 12px;
+    padding: 28px 28px 12px;
     gap: 12px;
     background: var(--gray-100);
     border: 1px solid var(--gray-95);
     border-radius: 12px;
-    flex: none;
-    align-self: stretch;
     flex-grow: 0;
 }
 
-main.login #form-container #auth-form input {
+form .c {
+    box-sizing: inherit;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+form > input {
     font: inherit;
     box-sizing: inherit;
     width: 100%;
     border: none;
     outline: none;
     color: var(--gray-50);
-    padding: 10px 16px;
+    padding: 10px 14px;
     min-height: 52px;
     background-color: var(--gray-95);
     border-radius: 10px;
     flex: none;
     order: 0;
-    align-self: stretch;
+    /* align-self: stretch; */
     flex-grow: 0;
+    &::placeholder {
+        color: var(--gray-60);
+        font-size: 12px;
+    }
+    &:focus {
+        background-color: var(--gray-100);
+        border: 1px solid var(--gray-60);
+        color: var(--gray-0);
+    }
 }
 
-main.login #form-container #auth-form input::placeholder {
-    color: var(--gray-60);
-}
 
-main.login #form-container #auth-form input:focus {
-    background-color: var(--gray-100);
-    border: 1px solid var(--gray-60);
-    color: var(--gray-0);
-}
-
-main.login #form-container #auth-form button[type='submit'] {
+form button[type='submit'] {
     font: var(--text-16-regular);
     font-style: normal;
     font-weight: 500;
@@ -90,7 +101,7 @@ main.login #form-container #auth-form button[type='submit'] {
     align-items: center;
     padding: 0 24px;
     width: 100%;
-    min-height: 42px;
+    height: 42px;
     background-color: var(--orange-500);
     color: var(--orange-50);
     border-radius: 10px;
@@ -99,44 +110,36 @@ main.login #form-container #auth-form button[type='submit'] {
     flex-grow: 0;
 }
 
-main.login #form-container #auth-form .register-container {
-    display: flex;
+form .c.link {
+    height: 42px;
     flex-direction: row;
-    justify-content: center;
-    align-items: center;
     order: 1;
     gap: 0px;
 }
 
-main.login #form-container #auth-form .register-container * {
+form .c.link > * {
     display: flex;
     align-items: center;
+    height: 100%;
     color: var(--gray-0);
     text-decoration: none;
     padding: 0 12px;
     width: fit-content;
-    min-height: 42px;
     border: none;
     background: var(--gray-100);
+    &:nth-child(2) {
+        padding: 0 4px;
+    }
 }
 
-main.login #form-container #auth-form .register-container *:nth-child(2) {
-    padding: 0 4px;
-}
 
-main.login #form-container #auth-form .register-container #register:hover {
-    background: var(--gray-98);
-    border-radius: 10px;
-    transition: background-color ease-in-out 90ms;
-}
-
-main.login #form-container #auth-form .register-container #register:active {
-    background-color: var(--gray-95);
-}
-
-main.login #form-container #logo-container {
-    color: var(--gray-30);
-    display: flex;
-    align-items: center;
-    font: var(--text-big-logo);
+form .c.link > a {
+    &:hover {
+        background: var(--gray-98);
+        border-radius: 10px;
+        transition: background-color ease-in-out 90ms;
+    }    
+    &:active {
+        background-color: var(--gray-95);
+    }
 }
