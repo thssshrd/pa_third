@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Доски</h2>
+
+<!-- Create New Board -->
+<form method="post" action="{% url 'create_board' %}">
+    {% csrf_token %}
+    <input type="text" name="name" placeholder="Название доски" required>
+    <button type="submit">Создать доску</button>
+</form>
+
+<ul class="board-list">
+    {% for board in boards %}
+    <li>
+        <a href="{% url 'kanban_board' board.id %}">{{ board.name }}</a>
+    </li>
+    {% empty %}
+    <p>У вас пока что нет досок. Создайте новую!</p>
+    {% endfor %}
+</ul>
+
+{% endblock %}

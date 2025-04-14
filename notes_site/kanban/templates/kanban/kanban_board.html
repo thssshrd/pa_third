@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/kanban_board.css' %}" />
+
+<h2 class="board-title">{{ board.name }}</h2>
+
+<!-- Add New Column Form -->
+<form method="post" action="{% url 'add_column' board.id %}" class="add-column-form">
+    {% csrf_token %}
+    <input type="text" name="name" placeholder="Название колонки" required>
+    <button type="submit">Добавить колонку</button>
+</form>
+
+<div class="kanban-container">
+    {% for column in columns %}
+    <div class="kanban-column" data-column-id="{{ column.id }}">
+        <div class="kanban-column-header">
+            <span>{{ column.name }}</span>
+            <a href="{% url 'delete_column' column.id %}" class="delete-column">❌</a>
+        </div>
+
+        <div class="kanban-card-list" data-column-id="{{ column.id }}">
+            {% for note in column.notes.all %}
+            <div class="kanban-card" draggable="true" data-note-id="{{ note.id }}">
+                <div class="kanban-card-title">
+                    <a href="{% url 'edit_note' note.id %}">{{ note.title|default:"(No Title)" }}</a>
+                </div>
+                <div class="kanban-card-text">{{ note.text|linebreaksbr }}</div>
+                <div class="kanban-card-meta">
+                    <div class="priority">{{ note.get_priority_display }}</div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- Add Card Button -->
+        <form method="post" action="{% url 'add_note' column.id %}" class="add-card-form">
+            {% csrf_token %}
+            <input type="hidden" name="column_id" value="{{ column.id }}">
+            <input type="text" name="title" placeholder="New task title" required>
+            <button type="submit">➕ Add Card</button>
+        </form>
+    </div>
+    {% endfor %}
+</div>
+
+<script src="{% static 'js/kanban.js' %}"></script>
+{% endblock %}

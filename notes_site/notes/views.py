@@ -3,8 +3,13 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
+from django.http import JsonResponse
+from django.db import transaction
+from django.db.models import F
+import json
 from .forms import NoteForm, SignUpForm, SigninForm
-from .models import Note
+from notes.models import Note
+from kanban.models import Board, Column
 
 
 def signup_view(request):
@@ -75,3 +80,56 @@ def edit_note(request, note_id):
     else:
         form = NoteForm(instance=note)
     return render(request, 'edit_note.html', {'form': form, 'note': note})
+
+@login_required
+def kanban_board(request, board_id):
+    """Displays the Kanban board with its columns and notes."""
+    board = get_object_or_404(Board, id=board_id, users=request.user)
+    columns = board.columns.all()
+    return render(request, "kanban_board.html", {"board": board, "columns": columns})
+
+@login_required
+def update_note_position(request):
+    """Handles drag-and-drop reordering of notes within columns."""
+    if request.method == "POST":
+        data = json.loads(request.body)
+        note_id = data.get("note_id")
+        column_id = data.get("column_id")
+        new_position = int(data.get("position"))
+
+        try:
+            note = Note.objects.get(id=note_id, user=request.user)
+            old_column = note.column
+            old_position = note.position
+            new_column = Column.objects.get(id=column_id, board__users=request.user)
+
+            with transaction.atomic():
+                if old_column == new_column:
+                    if new_position < old_position:
+                        Note.objects.filter(
+                            column=old_column,
+                            position__gte=new_position,
+                            position__lt=old_position
+                        ).exclude(id=note.id).update(position=F("position") + 1)
+                    elif new_position > old_position:
+                        Note.objects.filter(
+                            column=old_column,
+                            position__gt=old_position,
+                            position__lte=new_position
+                        ).exclude(id=note.id).update(position=F("position") - 1)
+                else:
+                    Note.objects.filter(column=old_column, position__gt=old_position).update(position=F("position") - 1)
+                    Note.objects.filter(column=new_column, position__gte=new_position).update(position=F("position") + 1)
+
+                note.column = new_column
+                note.position = new_position
+                note.save()
+
+            return JsonResponse({"status": "success"})
+
+        except Note.DoesNotExist:
+            return JsonResponse({"status": "error", "message": "Note not found"}, status=404)
+        except Column.DoesNotExist:
+            return JsonResponse({"status": "error", "message": "Column not found"}, status=404)
+        except Exception as e:
+            return JsonResponse({"status": "error", "message": str(e)}, status=400)

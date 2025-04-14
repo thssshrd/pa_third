@@ -1,0 +1,82 @@
+/* General Kanban Board Styles */
+.kanban-container {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding: 20px;
+}
+
+.kanban-column {
+    background: #f4f5f7;
+    border-radius: 8px;
+    padding: 10px;
+    width: 300px;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.kanban-column-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    padding-bottom: 10px;
+}
+
+.delete-column {
+    color: red;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+/* Card Styles */
+.kanban-card-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-height: 50px;
+}
+
+.kanban-card {
+    background: white;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    cursor: grab;
+}
+
+.kanban-card-title a {
+    text-decoration: none;
+    font-weight: bold;
+    color: black;
+}
+
+.kanban-card-text {
+    font-size: 14px;
+    color: #333;
+}
+
+/* Add New Card Button */
+.add-card-form {
+    margin-top: 10px;
+}
+
+.add-card-form input {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 5px;
+}
+
+.add-card-form button {
+    width: 100%;
+    background: #0079bf;
+    color: white;
+    border: none;
+    padding: 5px;
+    border-radius: 4px;
+    cursor: pointer;
+}
